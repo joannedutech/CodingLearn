@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>爆殺雙11｜限時倒數汽車零件特賣會</title>
+  <style>
+    :root {
+      --main-color: #d32f2f;
+      --accent-color: #ffc107;
+      --bg-color: #f9f9f9;
+      --font: 'Arial', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--bg-color);
+      line-height: 1.6;
+      color: #333;
+    }
+
+    header {
+      background-color: var(--main-color);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+    }
+
+    .hero {
+      background: url('https://via.placeholder.com/1200x400?text=爆殺雙11特賣會') center/cover no-repeat;
+      height: 40vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 2px 2px 4px #000;
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    .section {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .product {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      background: white;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .product img {
+      max-width: 100%;
+      border-radius: 4px;
+    }
+
+    .product-details h2 {
+      color: var(--main-color);
+    }
+
+    .countdown {
+      font-size: 1.5rem;
+      color: var(--accent-color);
+      margin: 1rem 0;
+    }
+
+    .testimonial, .qa {
+      background: white;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .product {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        font-size: 1.5rem;
+        height: 30vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>爆殺雙11汽車零件特賣會</h1>
+    <p>限時倒數・全場瘋搶・售完為止！</p>
+  </header>
+
+  <section class="hero">
+    <div>現在下單・現貨秒出</div>
+  </section>
+
+<section class="section">
+  <div class="product">
+    <img src="https://s.alicdn.com/@sc04/kf/H70ae59ec246149069ab586639ff644e1f.jpg" alt="高性能煞車碟盤（Unsplash）" />
+    <div class="product-details">
+      <h2>高性能煞車碟盤</h2>
+      <p>價格：NT$3,999</p>
+      <p>規格：直徑320mm / 適用多款車型</p>
+      <p class="countdown">⚠ 限時倒數：<span id="timer"></span></p>
+      <p>描述：進口高碳鋼材質製成，耐高溫、不變形，提升制動力、安全再升級。</p>
+    </div>
+  </div>
+</section>
+
+  <section class="section testimonial">
+    <h3>熱銷好評</h3>
+    <p>「裝上這款碟盤後下坡都更安心了！」— 台中 張先生</p>
+    <p>「一換馬上感受到差別，真的值這個價！」— 台北 陳小姐</p>
+  </section>
+
+  <section class="section qa">
+    <h3>常見問答</h3>
+    <p><strong>Q: 這款碟盤適合哪些車型？</strong><br />A: 適用市面上90%中型車，詳細請參考規格表。</p>
+    <p><strong>Q: 有保固嗎？</strong><br />A: 本產品提供一年保固，非人為損壞皆可更換。</p>
+  </section>
+
+  <footer>
+    <p>© 2025 雙11爆殺汽車零件特賣會 | Designed by Vibe Coding</p>
+  </footer>
+
+  <script>
+    // 倒數計時功能
+    const endTime = new Date("2025-11-11T23:59:59").getTime();
+    const timerElement = document.getElementById("timer");
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = endTime - now;
+
+      if (distance < 0) {
+        timerElement.innerText = "活動已結束";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      timerElement.innerText = `${days}天 ${hours}小時 ${minutes}分 ${seconds}秒`;
+    };
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+
+</html>
